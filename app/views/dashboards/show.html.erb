@@ -1,0 +1,5 @@
+<%= form_for @dashboard.new_tweet do |f| %>
+  <%= f.text_field :status %>
+  <%= f.submit "Create Tweet" %>
+<% end %>
+<%=render @dashboard.timeline %>
