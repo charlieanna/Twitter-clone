@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :tweets do
     post 'retweet' => 'tweets#retweet'
   end
-  resources :users,only: :show
+  resources :users,only: :show do
+    get 'following' => "users#followings"
+    get 'followers' => "users#followers"
+  end
   devise_for :users
   root to: "homes#show"
   resource :dashboard
