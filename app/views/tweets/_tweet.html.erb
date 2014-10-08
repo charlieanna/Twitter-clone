@@ -1,6 +1,7 @@
-<%= tweet.status %>
+<div><%= tweet.status %>
 <% if current_user %>
-  <%= link_to "favorite", favorite_tweet_path(tweet) %>
-  <%= link_to "unfavorite", unfavorite_tweet_path(tweet) %>
-  <%= link_to "retweet", tweet_retweet_path(tweet) %>
+  <%= link_to "favorite", tweet_favorite_path(tweet),method: :post %>
+  <%= link_to "unfavorite", tweet_unfavorite_path(tweet),method: :post %>
+  <%= link_to "retweet", tweet_retweet_path(tweet), method: :post %>
 <% end %>
+</div>

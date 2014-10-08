@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   get "hashtags",            to: "hashtags#index",     as: :hashtags
   resources :tweets do
     post 'retweet' => 'tweets#retweet'
+    post 'favorite' => 'tweets#favorite'
+    post 'unfavorite' => "tweets#unfavorite"
   end
-  resources :users,only: :show do
+  devise_for :users
+  resources :users,only: [:show,:index] do
     get 'following' => "users#followings"
     get 'followers' => "users#followers"
   end
-  devise_for :users
   root to: "homes#show"
   resource :dashboard
   # The priority is based upon order of creation: first created -> highest priority.

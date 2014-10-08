@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :following_user_relationships, foreign_key: "followed_user_id", class_name: "FollowingRelationship"
   has_many :following_users, through: :following_user_relationships, source: :follower
   has_many :favorite_tweets
-  has_many :favorites, through: :favorite_tweets
+  has_many :favorites, through: :favorite_tweets,source: :tweet
   belongs_to :college
   def timeline
     Tweet.where(user_id: self_and_followed_user_ids)

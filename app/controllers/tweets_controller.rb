@@ -52,22 +52,25 @@ class TweetsController < ApplicationController
   end
 
   def retweet
-    tweet = Tweet.find(params[:id])
+    tweet = Tweet.find(params[:tweet_id])
     retweet = current_user.tweets.new
     retweet.status = tweet.status
-    retweet.message = "RT by {tweet.user}"
+    #retweet.message = "RT by {tweet.user}"
     retweet.retweet_id = tweet.id
     retweet.save
+    redirect_to dashboard_path
   end
 
   def favorite
-    tweet = Tweet.find(params[:id])
+    tweet = Tweet.find(params[:tweet_id])
     current_user.favorites << tweet
+    redirect_to dashboard_path
   end
 
   def unfavorite
-    tweet = Tweet.find(params[:id])
+    tweet = Tweet.find(params[:tweet_id])
     current_user.favorites.delete(tweet)
+    redirect_to dashboard_path
   end
 
   # DELETE /tweets/1
