@@ -6,3 +6,43 @@
 <% end %>
 </div>
 
+<h2>Tweets</h2>
+<ul class="tweets" ng-controller="TweetsCtrl">
+  <li class="tweet animate-repeat tweet" ng-repeat="tweet in tweets | orderBy:predicate:reverse"  class="animate-repeat">
+   
+    
+    
+   
+      <span class="vote-buttons">
+     <button ng-click="favorite(tweet)" class="btn btn-success" id="favorite" ng-show="!tweet.favorited"><i class='fa fa-thumbs-up'></i>
+     </button>
+ 
+     <button class="btn btn-success" ng-click="unfavorite(tweet)" ng-show="question.favorited" id="unfavorite"><i class='fa fa-thumbs-down'></i></button>
+     <button class="btn btn-success" ng-click="retweet(tweet)" id="retweet"><i class='fa'></i></button>
+   </span>
+   
+    
+      
+     
+     <p style="display: inline;">{{tweet.status }}</p>
+   
+    </div>
+   
+  </li>
+ 
+</ul>
+
+   <span class="tweet-buttons">
+     <button ng-click="favorite(tweet)" class="btn btn-success" id="favorite" ng-show="!tweet.favorited"><i class='fa fa-thumbs-up'></i>
+     </button>
+ 
+     <button class="btn btn-success" ng-click="unfavorite(tweet)" ng-show="question.favorited" id="unfavorite"><i class='fa fa-thumbs-down'></i></button>
+     <button class="btn btn-success" ng-click="retweet(tweet)" id="retweet"><i class='fa'></i></button>
+   </span>
+   
+    
+      
+     
+     <p style="display: inline;">{{tweet.status }}</p>
+   
+    </div>
