@@ -30,7 +30,7 @@ class TweetsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => event.code,
+       :channel  => "twitter",
         :message  => {tweet:serializer,action:"create"},
         :callback => @my_callback
     )
@@ -72,7 +72,7 @@ class TweetsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => event.code,
+       :channel  => "twitter",
         :message  => {tweet:serializer,action:"retweet"},
         :callback => @my_callback
     )
@@ -87,7 +87,7 @@ class TweetsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => event.code,
+        :channel  => "twitter",
         :message  => {tweet:serializer,action:"favorite"},
         :callback => @my_callback
     )
@@ -102,7 +102,7 @@ class TweetsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => event.code,
+        :channel  => "twitter",
         :message  => {tweet:serializer,action:"unfavorite"},
         :callback => @my_callback
     )
@@ -118,7 +118,7 @@ class TweetsController < ApplicationController
 
     ## Execute Publish
     @pubnub.publish(
-        :channel  => event.code,
+        :channel  => "twitter",
         :message  => {tweet:serializer,action:"destroy"},
         :callback => @my_callback
     )

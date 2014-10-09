@@ -1,0 +1,25 @@
+# Logfile created on 2014-10-09 10:43:07 +0530 by logger.rb/44203
+D, [2014-10-09T10:43:07.668706 #1372] DEBUG -- Pubnub: Symbolizing options keys
+D, [2014-10-09T10:43:07.668835 #1372] DEBUG -- Pubnub: Setting default values
+D, [2014-10-09T10:43:07.668902 #1372] DEBUG -- Pubnub: 
+
+Created new Pubnub::Client instance
+D, [2014-10-09T10:43:07.668939 #1372] DEBUG -- Pubnub: Pubnub::Client#start_event_machine | starting EM in new thread
+D, [2014-10-09T10:43:07.668974 #1372] DEBUG -- Pubnub: Pubnub::Client#start_event_machine | We aren't running on thin
+D, [2014-10-09T10:43:07.701418 #1372] DEBUG -- Pubnub: Pubnub::Client#start_event_machine | EM started in new thread
+D, [2014-10-09T10:43:07.722334 #1372] DEBUG -- Pubnub: Event#initialize | Initialized Pubnub::Publish
+D, [2014-10-09T10:43:07.722396 #1372] DEBUG -- Pubnub: Created event Pubnub::Publish
+D, [2014-10-09T10:43:07.722425 #1372] DEBUG -- Pubnub: Pubnub::SingleEvent#fire
+D, [2014-10-09T10:43:07.722450 #1372] DEBUG -- Pubnub: Pubnub::SingleEvent#fire | Adding event to async_events
+D, [2014-10-09T10:43:07.722474 #1372] DEBUG -- Pubnub: Pubnub::SingleEvent#fire | Starting railgun
+D, [2014-10-09T10:43:07.722499 #1372] DEBUG -- Pubnub: Pubnub::Client#start_railgun | Initializing railgun
+D, [2014-10-09T10:43:07.809580 #1372] DEBUG -- Pubnub: Pubnub::SingleEvent#fire
+D, [2014-10-09T10:43:07.809811 #1372] DEBUG -- Pubnub: Pubnub::SingleEvent#fire | Event already on list!
+D, [2014-10-09T10:43:07.809847 #1372] DEBUG -- Pubnub: Pubnub::Event#fire
+D, [2014-10-09T10:43:07.809873 #1372] DEBUG -- Pubnub: Event#fire
+D, [2014-10-09T10:43:07.809973 #1372] DEBUG -- Pubnub: Event#start_event | sending request
+D, [2014-10-09T10:43:07.810007 #1372] DEBUG -- Pubnub: Event#start_event | tt: 0; ctt 0
+D, [2014-10-09T10:43:07.810353 #1372] DEBUG -- Pubnub: Pubnub::Publish#uri http://pubsub.pubnub.com/publish/pub-75a3aad0-d9c8-4763-8838-9aae1226ed0c/sub-fdd15440-8939-11e1-aa2b-41374c390533/0/twitter/0/%7B%22tweet%22%3A%7B%22tweet%22%3Anull%7D%2C%22action%22%3A%22create%22%7D?pnsdk=PubNub-Ruby/3.5.8&uuid=25c99b32-fcff-4029-97f2-a0ed3493ce0a
+D, [2014-10-09T10:43:10.040423 #1372] DEBUG -- Pubnub: Event#handle_response
+D, [2014-10-09T10:43:10.040549 #1372] DEBUG -- Pubnub: Event#add_common_data_to_envelopes
+D, [2014-10-09T10:43:10.040584 #1372] DEBUG -- Pubnub: Firing callbacks
