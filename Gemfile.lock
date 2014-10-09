@@ -29,6 +29,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_commentable (4.0.1)
     acts_as_follower (0.2.1)
+    angularjs-rails (1.2.22)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     builder (3.2.2)
@@ -130,6 +131,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_commentable
   acts_as_follower
+  angularjs-rails
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)

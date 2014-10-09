@@ -5,3 +5,35 @@
   <%= link_to "retweet", tweet_retweet_path(tweet), method: :post %>
 <% end %>
 </div>
+
+<h2>Questions</h2>
+<ul class="questions" ng-controller="QuestionsCtrl" ng-init="get('<%= event.id%>');subscribe_as_admin('<%=event.code%>',<%= current_admin.present?%>)">
+  <li class=" question animate-repeat question" ng-repeat="question in questions | orderBy:predicate:reverse"  class="animate-repeat">
+   
+    
+    
+    <% unless admin_signed_in? %>
+      <span class="vote-buttons">
+     <button ng-click="up(question)" class="btn btn-success" id="up" ng-show="!question.liked"><i class='fa fa-thumbs-up'></i>
+     </button>
+ 
+     <button class="btn btn-success" ng-click="down(question)" ng-show="question.liked" id="down"><i class='fa fa-thumbs-down'></i></button>
+   </span>
+     <% else %>
+     <span class="vote-buttons">
+       <button class="btn btn-success" id="approve" ng-click="approve(question)"><i class='fa fa-thumbs-up'></i>Approve </button>
+       <button class="btn btn-success"  ng-click="reject(question)" id="reject"><i class='fa fa-thumbs-down'></i>Reject</button>
+   
+  </span>
+    
+      
+     <% end %>
+     <p style="display: inline;">{{question.body }}</p>
+     <span id="votes">
+     {{question.votes}}
+   </span>
+    </div>
+   
+  </li>
+ 
+</ul>

@@ -25,16 +25,25 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
     @tweet = current_user.tweets.new(tweet_params)
+    serializer = TweetSerializer.new @question
+    @my_callback = lambda { |m| "nothing" }
 
-    respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to dashboard_path, notice: 'Tweet was successfully created.' }
-        format.json { render :show, status: :created, location: @tweet }
-      else
-        format.html { render :new }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
-      end
-    end
+    ## Execute Publish
+    @pubnub.publish(
+        :channel  => event.code,
+        :message  => {tweet:serializer,action:"create"},
+        :callback => @my_callback
+    )
+    render nothing: true
+        # respond_to do |format|
+        #   if @tweet.save
+        #     format.html { redirect_to dashboard_path, notice: 'Tweet was successfully created.' }
+        #     format.json { render :show, status: :created, location: @tweet }
+        #   else
+        #     format.html { render :new }
+        #     format.json { render json: @tweet.errors, status: :unprocessable_entity }
+        #   end
+        # end
   end
 
   # PATCH/PUT /tweets/1
@@ -58,29 +67,62 @@ class TweetsController < ApplicationController
     #retweet.message = "RT by {tweet.user}"
     retweet.retweet_id = tweet.id
     retweet.save
-    redirect_to dashboard_path
+    serializer = TweetSerializer.new @question
+    @my_callback = lambda { |m| "nothing" }
+
+    ## Execute Publish
+    @pubnub.publish(
+        :channel  => event.code,
+        :message  => {tweet:serializer,action:"retweet"},
+        :callback => @my_callback
+    )
+    render nothing: true
   end
 
   def favorite
     tweet = Tweet.find(params[:tweet_id])
     current_user.favorites << tweet
-    redirect_to dashboard_path
+    serializer = TweetSerializer.new @question
+    @my_callback = lambda { |m| "nothing" }
+
+    ## Execute Publish
+    @pubnub.publish(
+        :channel  => event.code,
+        :message  => {tweet:serializer,action:"favorite"},
+        :callback => @my_callback
+    )
+    render nothing: true
   end
 
   def unfavorite
     tweet = Tweet.find(params[:tweet_id])
     current_user.favorites.delete(tweet)
-    redirect_to dashboard_path
+    serializer = TweetSerializer.new @question
+    @my_callback = lambda { |m| "nothing" }
+
+    ## Execute Publish
+    @pubnub.publish(
+        :channel  => event.code,
+        :message  => {tweet:serializer,action:"unfavorite"},
+        :callback => @my_callback
+    )
+    render nothing: true
   end
 
   # DELETE /tweets/1
   # DELETE /tweets/1.json
   def destroy
     @tweet.destroy
-    respond_to do |format|
-      format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    serializer = TweetSerializer.new @question
+    @my_callback = lambda { |m| "nothing" }
+
+    ## Execute Publish
+    @pubnub.publish(
+        :channel  => event.code,
+        :message  => {tweet:serializer,action:"destroy"},
+        :callback => @my_callback
+    )
+    render nothing: true
   end
 
   private

@@ -42,3 +42,4 @@ gem "acts_as_follower"
 gem 'simple_hashtag'
 gem 'pubnub'
 gem 'acts_as_commentable'
+gem 'angularjs-rails'
